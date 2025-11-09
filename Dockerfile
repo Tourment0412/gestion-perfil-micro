@@ -23,6 +23,9 @@ FROM eclipse-temurin:21-jre-alpine
 
 WORKDIR /app
 
+# Instalar curl para healthchecks
+RUN apk add --no-cache curl
+
 # Crear usuario no-root
 RUN addgroup -g 1001 -S appgroup && \
     adduser -u 1001 -S appuser -G appgroup
