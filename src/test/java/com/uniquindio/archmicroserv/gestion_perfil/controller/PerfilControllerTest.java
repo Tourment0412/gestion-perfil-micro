@@ -45,12 +45,13 @@ class PerfilControllerTest {
     @InjectMocks
     private PerfilController perfilController;
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     private PerfilRequestDTO perfilRequestDTO;
     private PerfilResponseDTO perfilResponseDTO;
 
     @BeforeEach
+    @SuppressWarnings("unused") // JUnit automatically invokes @BeforeEach methods
     void setUp() {
         mockMvc = MockMvcBuilders.standaloneSetup(perfilController)
                 .setControllerAdvice(new com.uniquindio.archmicroserv.gestion_perfil.exceptions.GlobalExceptionHandler())
