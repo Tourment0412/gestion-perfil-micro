@@ -4,9 +4,8 @@ import com.uniquindio.archmicroserv.gestion_perfil.service.PerfilService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
-import org.springframework.amqp.rabbit.connection.ConnectionFactory;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
@@ -14,8 +13,12 @@ import java.util.Map;
 @Component
 @RequiredArgsConstructor
 @Slf4j
-@ConditionalOnClass(ConnectionFactory.class)
-@ConditionalOnProperty(name = "spring.rabbitmq.host", matchIfMissing = false)
+@ConditionalOnProperty(
+	prefix = "spring.rabbitmq",
+	name = "host",
+	matchIfMissing = false
+)
+@Profile("!test")
 public class PerfilEventListener {
 
     private final PerfilService perfilService;
