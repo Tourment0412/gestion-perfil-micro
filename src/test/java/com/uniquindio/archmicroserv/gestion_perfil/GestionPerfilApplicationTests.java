@@ -10,6 +10,8 @@ class GestionPerfilApplicationTests {
 
 	@Test
 	void contextLoads() {
+		// Test that the application context loads successfully
+		// RabbitMQ is disabled via @ConditionalOnProperty in RabbitMQConfig
 	}
 
 }
